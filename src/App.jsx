@@ -1,12 +1,23 @@
 import logo from '../src/assets/logo.png'
 import {PiPhoneFill} from 'react-icons/pi'
 import {TbMailFilled} from 'react-icons/tb'
+import preview from '../src/assets/preview.png'
+import {AiOutlineDownload} from 'react-icons/ai'
 
 function App() {
   
 
   return (
-      <div className='w-[100vw] h-[100vh] flex flex-col gap-4 pt-10 px-3 items-center xl:flex-row xl:justify-center bg-gray-100 text-center xl:text-left xl:pt-0'>
+    <>
+    <div className='w-[100vw] h-[10vh] bg-primary text-white flex justify-center items-center'>
+      <a href="https://drive.google.com/file/d/1gxomOV4uujmFBjtP4MdXq_aMn0-9cH2W/view?usp=drivesdk" 
+      className='w-full h-full text-2xl flex text-center justify-center items-center gap-2'><AiOutlineDownload size={24}/>Catalogue du Salon</a>
+    </div>
+    <div className='w-[100vw] h-[90vh] bg-contain bg-no-repeat bg-top' style={{backgroundImage: `url(${preview})`}}>
+    </div>
+    
+    
+      {/* <div className='w-[100vw] h-[100vh] flex flex-col gap-4 pt-10 px-3 items-center xl:flex-row xl:justify-center bg-gray-100 text-center xl:text-left xl:pt-0'>
         <img src={logo} alt="logo" className='w-[300px] h-[300px]'/>
         <div className='flex flex-col gap-2 max-w-[600px] items-center xl:items-start'>
           <p className='font-bold text-3xl text-primary xl:text-5xl'>Du 07 au 12 Février 2024</p>
@@ -21,7 +32,8 @@ function App() {
             <a href='mailto:contact@sanagri.cm' className='font-bold text-xl xl:text-xl'>contact@sanagri.cm</a>
           </div>
         </div>
-      </div>
+      </div> */}
+    </>
   )
 }
 
