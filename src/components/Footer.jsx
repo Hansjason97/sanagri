@@ -34,7 +34,7 @@ function Footer() {
           <p>
             {t('contact.by')}
           </p>
-          <DefaultButton text={t('download')} link={'#'}/>
+          <DefaultButton text={t('download')} link={'https://drive.google.com/file/d/1gxomOV4uujmFBjtP4MdXq_aMn0-9cH2W/view?usp=drivesdk'}/>
         </div>
       </div>
     </div>
