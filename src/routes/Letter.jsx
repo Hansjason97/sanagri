@@ -49,9 +49,9 @@ function Letter() {
           </div>
           <button className='borderButton'>{"Envoyer"}</button>
         </form>
-        <PDFDownloadLink document={<MyDocument/>} fileName='Letter'>
+        {/* <PDFDownloadLink document={<MyDocument/>} fileName='Letter'>
         {({loading}) => (loading ? 'Loading document' : <button className="bg-primary px-4 py-2 text-white">Download</button>)}
-      </PDFDownloadLink>
+      </PDFDownloadLink> */}
       </div>
       
 
