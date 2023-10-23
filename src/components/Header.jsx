@@ -46,7 +46,7 @@ function Header() {
                     <a href="/#activities">{t('menu.link2')}</a>
                     <a href="/#join">{t('menu.link3')}</a>
                     <a href="#contact">{t('menu.link4')}</a>
-                    <a href=""><button className='borderButton border-white'>{t('menu.link5')}</button></a>
+                    <Link to="/invitation"><button className='borderButton border-white'>{t('menu.link5')}</button></Link>
                 </span>
                 {/**Menu Icon */}
                 <div className={ visible ? `menuIcon menuIconActive` : `menuIcon`} onClick={()=>setVisible(!visible)}>
@@ -61,7 +61,7 @@ function Header() {
                     <a href="/#activities" onClick={()=>setVisible(!visible)}>{t('menu.link2')}</a>
                     <a href="/#join" onClick={()=>setVisible(!visible)}>{t('menu.link3')}</a>
                     <a href="#contact" onClick={()=>setVisible(!visible)}>{t('menu.link4')}</a>
-                    <a href=""><button className='borderButton border-black'>{t('menu.link5')}</button></a>
+                    <Link to="/invitation"><button className='borderButton border-black'>{t('menu.link5')}</button></Link>
         </div>
         <div className={backdrop} onClick={()=>setVisible(!visible)}></div>
         {/**Fixed on scroll menu */}
@@ -73,7 +73,7 @@ function Header() {
                     <a href="/#activities">{t('menu.link2')}</a>
                     <a href="/#join">{t('menu.link3')}</a>
                     <a href="#contact">{t('menu.link4')}</a>
-                    <a href=""><button className='borderButton bg-primary text-white'>{t('menu.link5')}</button></a>
+                    <Link to="/invitation"><button className='borderButton bg-primary text-white'>{t('menu.link5')}</button></Link>
                 </span>
                 {/**Menu Icon */}
                 <div className={ visible ? `menuIconSpecial menuIconActive` : `menuIconSpecial`} onClick={()=>setVisible(!visible)}>

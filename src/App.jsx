@@ -5,6 +5,7 @@ import ListItem from "./components/ListItem";
 import DefaultButton from "./components/DefaultButton";
 import { useTranslation } from "react-i18next";
 import Reveal from "./components/Reveal";
+import { Helmet } from "react-helmet-async";
 
 function App() {
 
@@ -58,6 +59,9 @@ function App() {
 
   return (
     <React.Fragment>
+      <Helmet>
+        <title>{t('siteTitle')}</title>
+      </Helmet>
       <Reveal>
           <main className="mainContent">
             <div className="content flex flex-col items-start gap-3">

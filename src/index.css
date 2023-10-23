@@ -30,7 +30,7 @@
         @apply max-w-7xl w-full mx-auto px-4 xl:px-0;
     }
     .mainContent{
-        @apply min-h-[100vh] pt-[180px] pb-[80px] bg-[url('/home.jpg')] bg-black/30 bg-blend-multiply bg-cover flex flex-col justify-center text-white;
+        @apply min-h-[100vh] pt-[180px] pb-[80px] bg-[url('/home.jpg')] bg-black/30 bg-blend-multiply bg-cover bg-right flex flex-col justify-center text-white;
     }
     .menuIcon{
         @apply w-8 cursor-pointer block lg:hidden;
@@ -88,5 +88,8 @@
     }
     .borderButton{
         @apply px-4 py-2 border;
+    }
+    .pageTop{
+        @apply min-h-[40vh] py-[80px] lg:py-[100px] xl:py-[120px] w-full flex justify-center items-center bg-black/50 bg-[url('/invitationTop.jpg')] bg-blend-multiply bg-cover bg-right-bottom;
     }
 }
