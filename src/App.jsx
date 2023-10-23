@@ -88,12 +88,12 @@ function App() {
               </p>
               <DefaultButton text={t('download')} link={"https://drive.google.com/file/d/1gxomOV4uujmFBjtP4MdXq_aMn0-9cH2W/view?usp=drivesdk"} big/>
             </div>
-            <Image image={"/woman0.jpg"} alt={"about"}/>
+            <Image image={"/tools.jpg"} alt={"about"}/>
           </section>
       </Reveal>
 
       <Reveal>
-          <section className="content sectionLvl1">
+          <section className="content sectionLvl1 lg:flex-row-reverse">
             <div className="textDiv">
               <SectionTitle title={t('goalsTitle')} subtitle={t('goalsSub')} />
                 <ul role="list" className="defaultList">
@@ -168,12 +168,11 @@ function App() {
       </Reveal>
 
       <Reveal>
-          <section className="content sectionLvl1" id="join">
+          <section className="content sectionLvl1 lg:flex-row-reverse" id="join">
             <div className="textDiv">
                   <SectionTitle title={t('joinTitle')} subtitle={t('joinSub')}/>
                   <p>
-                  En participant en tant qu’exposant ou partenaire, vous bénéficiez immédiatement de toute l’attraction mobilisé autour de cet événement.
-                  35000 à 50000 visiteurs sont attendu chaque jour, une force commerciale et marketing non négligeable; soit 210,000 à 300,000 visiteurs reçus à l’issus du Salon…Quelqu’en soit ce que produit ou service vous proposez, vous vendrez!
+                  {t('joinText')}
                   </p>
                   <DefaultButton text={t('pricing')} link={"https://wa.me/+237696105414"} />
             </div>
