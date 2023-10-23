@@ -117,11 +117,11 @@ function App() {
       <section className="content sectionLvl1">
         <div className="textDiv">
           <SectionTitle title={t('opportunityTitle')} subtitle={t('opportunitySub')} />
-          <div>
-            <p>
+          <div className="flex flex-col gap-3">
+            <p className="italic">
             {t('opportunityText')}
             </p>
-            <p>
+            <p className="text-gray-500">
             {t('opportunityText2')}
             </p>
           </div>
