@@ -69,6 +69,11 @@ function App() {
             <img src="/ArrowWhite.svg" alt="icon" className="w-10 md:w-11 lg:w-12 h-auto" />
             <span className="text-[24px] md:text-[28px] lg:text-[32px] group-hover:pl-2 transition-all duration-150 ease-linear">{t('more')}</span>
           </a>
+          <div className="flex flex-wrap gap-8 mt-5">
+            <img src="/CM.png" alt="cm" className="w-[75px] h-[75px] object-contain"/>
+            <img src="/PRC.jpg" alt="prc" className="w-[75px] h-[75px] object-contain"/>
+            <img src="/minader.jpg" alt="minader" className="w-[75px] h-[75px] object-contain"/>
+          </div>
         </div>
       </main>
       <section className="content sectionLvl1" id="about">

@@ -30,7 +30,7 @@
         @apply max-w-7xl w-full mx-auto px-4 xl:px-0;
     }
     .mainContent{
-        @apply min-h-[100vh] py-[180px] bg-[url('home.jpg')] bg-black/30 bg-blend-multiply bg-cover flex flex-col justify-center text-white;
+        @apply min-h-[100vh] pt-[180px] pb-[80px] bg-[url('home.jpg')] bg-black/30 bg-blend-multiply bg-cover flex flex-col justify-center text-white;
     }
     .menuIcon{
         @apply w-8 cursor-pointer block lg:hidden;
