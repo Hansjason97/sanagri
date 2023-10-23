@@ -63,8 +63,7 @@ function Letter() {
 const styles = StyleSheet.create({
   page: {
     flexDirection: 'row',
-    backgroundColor: 'white',
-    backgroundImage
+    backgroundColor: 'white'
   },
   section: {
     margin: 10,
