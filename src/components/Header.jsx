@@ -8,11 +8,15 @@ function Header() {
 
     const {t, i18n} = useTranslation();
     const [isFixed, setIsFixed] = useState(false);
-    const handleScroll = ()=>{
-        window.scrollY >= 200 ? setIsFixed(true) : setIsFixed(false);
-    }
-
-    window.addEventListener('scroll', handleScroll)
+    useEffect(() => {
+        const handleScroll = () => {
+          window.scrollY >= 200? setIsFixed(true) : setIsFixed(false);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }, []);
 
     const [visible, setVisible] = useState(false);
     let menuClass = 'h-full w-fit bg-white fixed top-0 right-0 z-30 flex flex-col gap-12 py-8 font-mono text-center px-[70px] lg:hidden transition-all duration-300 ease-in-out counterLink';
