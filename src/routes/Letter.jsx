@@ -22,13 +22,16 @@ function Letter() {
 
   async function generatePdf() {
     const existingPdfBytes = await fetch(samplePDF).then(res => res.arrayBuffer());
-    const pdfDoc = await PDFDocument.load(existingPdfBytes);
-    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-    const pages = pdfDoc.getPages();
-    const firstPage = pages[0];
+  const pdfDoc = await PDFDocument.load(existingPdfBytes);
+  const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+  const pages = pdfDoc.getPages();
+  const firstPage = pages[0];
 
-    const textOptions = { size: 12, font: helveticaFont, color: rgb(0, 0, 0) };
-    const lineHeight = 20;
+  const textOptions = { size: 12, font: helveticaFont, color: rgb(0, 0, 0) };
+  const lineHeight = 20;
+  const maxWidth = 530;
+  const marginLeft = 40;
+  const initialY = 750;
 
     const content = `
     Ambassade du Cameroun
@@ -62,19 +65,33 @@ function Letter() {
     Jeffe KOMBOU
     `;
 
-    const lines = content.split('\n');
-    let y = 750;
-    lines.forEach(line => {
-      firstPage.drawText(line.trim(), { x: 50, y, ...textOptions });
-      y -= lineHeight;
-    });
+    const words = content.split(' ');
+  let y = initialY;
+  let line = '';
 
-    const pdfBytes = await pdfDoc.save();
-    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-    const url = URL.createObjectURL(blob);
-    setPdfUrl(url);
-    setIsOpen(true);
+  words.forEach(word => {
+    const testLine = line + word + ' ';
+    const { width } = helveticaFont.widthOfTextAtSize(testLine, textOptions.size);
+
+    if (width > maxWidth && line) {
+      firstPage.drawText(line.trim(), { x: marginLeft, y, ...textOptions });
+      line = word + ' ';
+      y -= lineHeight;
+    } else {
+      line = testLine;
+    }
+  });
+
+  if (line) {
+    firstPage.drawText(line.trim(), { x: marginLeft, y, ...textOptions });
   }
+
+  const pdfBytes = await pdfDoc.save();
+  const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+  const url = URL.createObjectURL(blob);
+  setPdfUrl(url);
+  setIsOpen(true);
+}
 
   function handleSubmit(e) {
     e.preventDefault();
