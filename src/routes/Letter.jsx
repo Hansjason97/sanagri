@@ -22,16 +22,13 @@ function Letter() {
 
   async function generatePdf() {
     const existingPdfBytes = await fetch(samplePDF).then(res => res.arrayBuffer());
-  const pdfDoc = await PDFDocument.load(existingPdfBytes);
-  const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
-  const pages = pdfDoc.getPages();
-  const firstPage = pages[0];
+    const pdfDoc = await PDFDocument.load(existingPdfBytes);
+    const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+    const pages = pdfDoc.getPages();
+    const firstPage = pages[0];
 
-  const textOptions = { size: 12, font: helveticaFont, color: rgb(0, 0, 0) };
-  const lineHeight = 20;
-  const maxWidth = 530;
-  const marginLeft = 40;
-  const initialY = 750;
+    const textOptions = { size: 10, font: helveticaFont, color: rgb(0, 0, 0) };
+    const lineHeight = 20;
 
     const content = `
     Ambassade du Cameroun
@@ -41,8 +38,8 @@ function Letter() {
     Objet : Lettre d’aide à l’obtention d’un visa demandé à une ambassade ou un consulat.
     
     Madame, Monsieur,
-
-    Le Salon National de l’Agriculture 2024 ouvrira ses portes du 22 au 24 Mai 2024 à la maison du parti de Bonanjo, Douala Cameroun.
+    Le Salon National de l’Agriculture 2024 ouvrira ses portes du 22 au 24 Mai 2024 à la maison du parti de Bonanjo,
+    Douala Cameroun.
     Nous serions très heureux de pouvoir compter parmi nos visiteurs la personne dont le nom figure ci-dessous :
 
     M./Mme ${name}
@@ -54,10 +51,14 @@ function Letter() {
     Passeport valable jusqu'au : ${expire}
 
     Le séjour au Cameroun durera du 22/05/2024 au 25/05/2024.
-    Nous sommes convaincus qu’il s’agit là pour ce visiteur d’une opportunité de nouer des contacts professionnels avec les exposants camerounais et de négocier des contrats. Les frais d’entrée au salon, de déplacement et d'hébergement sont entièrement à sa charge.
+    Nous sommes convaincus qu’il s’agit là pour ce visiteur d’une opportunité de nouer des contacts professionnels 
+    avec les exposants camerounais et de négocier des contrats. Les frais d’entrée au salon, de déplacement et 
+    d'hébergement sont entièrement à sa charge.
 
-    Nous vous saurions gré de bien vouloir accélérer la procédure d’obtention de son visa afin de permettre sa visite du Salon National de l’Agriculture 2024.
-    Nous vous remercions par avance de l'aide que vous pourrez apporter dans cette démarche et nous espérons vivement pouvoir l’accueillir lors de notre salon.
+    Nous vous saurions gré de bien vouloir accélérer la procédure d’obtention de son visa afin de permettre sa visite 
+    du Salon National de l’Agriculture 2024.
+    Nous vous remercions par avance de l'aide que vous pourrez apporter dans cette démarche et nous espérons vivement 
+    pouvoir l’accueillir lors de notre salon.
 
     Dans cette attente, recevez, Madame, Monsieur, l'expression de notre parfaite considération.
 
@@ -65,33 +66,19 @@ function Letter() {
     Jeffe KOMBOU
     `;
 
-    const words = content.split(' ');
-  let y = initialY;
-  let line = '';
-
-  words.forEach(word => {
-    const testLine = line + word + ' ';
-    const { width } = helveticaFont.widthOfTextAtSize(testLine, textOptions.size);
-
-    if (width > maxWidth && line) {
-      firstPage.drawText(line.trim(), { x: marginLeft, y, ...textOptions });
-      line = word + ' ';
+    const lines = content.split('\n');
+    let y = 750;
+    lines.forEach(line => {
+      firstPage.drawText(line.trim(), { x: 40, y, maxWidth: 530, wordBreaks: [" "], lineHeight: 0, ...textOptions });
       y -= lineHeight;
-    } else {
-      line = testLine;
-    }
-  });
+    });
 
-  if (line) {
-    firstPage.drawText(line.trim(), { x: marginLeft, y, ...textOptions });
+    const pdfBytes = await pdfDoc.save();
+    const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    setPdfUrl(url);
+    setIsOpen(true);
   }
-
-  const pdfBytes = await pdfDoc.save();
-  const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-  const url = URL.createObjectURL(blob);
-  setPdfUrl(url);
-  setIsOpen(true);
-}
 
   function handleSubmit(e) {
     e.preventDefault();
